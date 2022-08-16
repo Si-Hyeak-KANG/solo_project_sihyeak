@@ -21,8 +21,8 @@ import java.util.List;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final CompanyLocationRepository locationRepository;
-    private final CompanyTypeRepository typeRepository;
+    private final CompanyLocationRepository companyLocationRepository;
+    private final CompanyTypeRepository companyTypeRepository;
 
     /**
      * 회원 가입 기능
@@ -41,7 +41,7 @@ public class MemberService {
      */
     public List<Member> findMembersByType(String type) {
 
-        CompanyType companyType = typeRepository.findByTypeName(type);
+        CompanyType companyType = companyTypeRepository.findByTypeName(type);
         return memberRepository.findAllByCompanyTypeContaining(companyType.getTypeId());
     }
 
@@ -50,7 +50,7 @@ public class MemberService {
      */
     public List<Member> findMembersByLocation(String location) {
 
-        CompanyLocation companyLocation = locationRepository.findByCity(location);
+        CompanyLocation companyLocation = companyLocationRepository.findByCity(location);
         return memberRepository.findAllByCompanyLocationContaining(companyLocation.getLocationId());
     }
 

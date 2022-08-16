@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Member {
+public class Member{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,6 @@ public class Member {
 
     private String password;
 
-    @Enumerated(value = EnumType.STRING)
     private Enum<Gender> gender;
 
     private int age;
