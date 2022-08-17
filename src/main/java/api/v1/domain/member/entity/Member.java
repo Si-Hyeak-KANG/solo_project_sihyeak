@@ -26,7 +26,7 @@ public class Member{
     private String companyName;
 
     @ManyToOne
-    @JoinColumn(name = "TYPE_ID")
+    @JoinColumn(name = "TYPE_CODE")
     private CompanyType companyType;
 
     public void setCompanyType(CompanyType companyType) {
@@ -34,7 +34,7 @@ public class Member{
     }
 
     @ManyToOne
-    @JoinColumn(name = "LOCATION_ID")
+    @JoinColumn(name = "LOCATION_CODE")
     private CompanyLocation companyLocation;
 
     public void setCompanyType(CompanyLocation companyLocation) {

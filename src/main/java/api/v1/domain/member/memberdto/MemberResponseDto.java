@@ -14,9 +14,17 @@ public class MemberResponseDto {
     private long memberId;
     private String email;
     private String username;
-    private String age;
+    private int age;
     private Gender gender;
-    private String CompanyName;
+    private String companyName;
     private CompanyType companyType;
     private CompanyLocation companyLocation;
+
+    public String getCompanyType() {
+        return companyType.getTypeCode();
+    }
+
+    public String getCompanyLocation() {
+        return companyLocation.getLocationCode();
+    }
 }

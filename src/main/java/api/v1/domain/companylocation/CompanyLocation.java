@@ -22,7 +22,14 @@ public class CompanyLocation {
 
     private String city;
 
+    @Column(length = 3, nullable = false, unique=true)
+    private String locationCode;
+
     @OneToMany(mappedBy = "companyLocation")
     private List<Member> members = new ArrayList<>();
 
+    public CompanyLocation(String city, String locationCode) {
+        this.city = city;
+        this.locationCode = locationCode;
+    }
 }

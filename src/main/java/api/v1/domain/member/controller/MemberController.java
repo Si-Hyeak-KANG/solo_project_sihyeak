@@ -3,12 +3,14 @@ package api.v1.domain.member.controller;
 import api.v1.domain.member.entity.Member;
 import api.v1.domain.member.service.MemberService;
 import api.v1.dto.MultiResponseDto;
+import api.v1.dto.MultiResponseListDto;
 import api.v1.dto.SingleResponseDto;
 import api.v1.domain.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,24 +38,29 @@ public class MemberController {
     }
 
     /**
-     * GetMembers : 특정 회원 조회 (업종)
+     * GetMembers : 특정 회원 조회 (업종,지역)
      */
-    @GetMapping("/type")
-    public ResponseEntity getMembersByType(@RequestParam String type) {
-        List<Member> members = memberService.findMembersByType(type);
+    @GetMapping("/search")
+    public ResponseEntity getMembersByCondition(@RequestParam @Nullable String type,
+                                           @RequestParam @Nullable String location) {
+        List<Member> members = memberService.findMembersByCondition(type, location);
         return new ResponseEntity<>(
-                mapper.membersToMemberResponsesDto(members),HttpStatus.OK);
+                new MultiResponseListDto<>(mapper.membersToMemberResponsesDto(members)), HttpStatus.OK);
     }
+
 
     /**
      * GetMembers : 특정 회원 조회 (지역)
      */
+    /*
     @GetMapping("/location")
-    public ResponseEntity getMembersByLocation(@RequestParam String location) {
+    public ResponseEntity getMembersByLocation(@RequestParam @Nullable String location) {
         List<Member> members = memberService.findMembersByLocation(location);
         return new ResponseEntity<>(
                 mapper.membersToMemberResponsesDto(members),HttpStatus.OK);
     }
+     */
+
 
     /**
      * GetMembers : 전체 회원 조회
@@ -64,7 +71,7 @@ public class MemberController {
         Page<Member> pageMembers = memberService.findMembers(page - 1, size);
         List<Member> members = pageMembers.getContent();
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.membersToMemberResponsesDto(members),pageMembers), HttpStatus.OK);
+                new MultiResponseDto<>(mapper.membersToMemberResponsesDto(members), pageMembers), HttpStatus.OK);
     }
 
     /**

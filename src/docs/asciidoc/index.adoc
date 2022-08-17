@@ -1,0 +1,86 @@
+= 전국 사업자 연합 커뮤니티 애플리케이션
+:sectnums:
+:toc: left
+:toclevels: 4
+:toc-title: Table of Contents
+:source-highlighter: prettify
+
+Kang Si Hyeak <zlcls456@gmail.com>
+
+v1.0.0 2022.08.17
+
+
+***
+== MemberController
+
+=== 회원 조회
+
+.curl-request
+include::{snippets}/get-Member/curl-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-Member/path-parameters.adoc[]
+
+.http-request
+include::{snippets}/get-Member/http-request.adoc[]
+
+.http-response
+include::{snippets}/get-Member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-Member/response-fields.adoc[]
+
+=== 회원 전체 조회
+
+.curl-request
+include::{snippets}/get-members/curl-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-members/request-parameters.adoc[]
+
+.http-request
+include::{snippets}/get-members/http-request.adoc[]
+
+.http-response
+include::{snippets}/get-members/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-members/response-fields.adoc[]
+
+=== 특정 조건에 해당하는 회원 조회
+TIP: 특정 조건은 업종 코드와 지역 코드를 기준으로 합니다.
+
+.curl-request
+include::{snippets}/get-members-byCondition-all/curl-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-members-byCondition-all/request-parameters.adoc[]
+
+---
+
+==== 업종 코드와 지역 코드를 고려할 경우
+
+.http-request
+include::{snippets}/get-members-byCondition-all/http-request.adoc[]
+
+.http-response
+include::{snippets}/get-members-byCondition-all/http-response.adoc[]
+
+==== 업종 코드만 고려할 경우
+.http-request
+include::{snippets}/get-members-byCondition-type/http-request.adoc[]
+
+.http-response
+include::{snippets}/get-members-byCondition-type/http-response.adoc[]
+
+==== 지역 코드만 고려할 경우
+.http-request
+include::{snippets}/get-members-byCondition-location/http-request.adoc[]
+
+.http-response
+include::{snippets}/get-members-byCondition-location/http-response.adoc[]
+
+---
+
+.response-fields
+include::{snippets}/get-members-byCondition-all/response-fields.adoc[]

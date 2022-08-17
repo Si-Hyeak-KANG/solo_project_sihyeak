@@ -10,9 +10,11 @@ import java.util.List;
 @Repository
 public interface MemberRepository extends JpaRepository<Member,Long> {
 
+    /*
     @Query(value = "SELECT m FROM Member m WHERE m.companyLocation = :locationId")
     List<Member> findAllByCompanyLocationContaining(Long locationId);
+     */
 
-    @Query(value = "SELECT m FROM Member m WHERE m.companyType = :typeId")
-    List<Member> findAllByCompanyTypeContaining(Long typeId);
+    @Query(value = "SELECT m FROM Member m WHERE m.companyType = :typeCode and m.companyLocation =:locationCode")
+    List<Member> findAllByCompanyTypeAndCompanyLocationContaining(String typeCode,String locationCode);
 }

@@ -37,22 +37,27 @@ public class MemberService {
     }
 
     /**
-     * 특정 조건에 맞는 회원 조회 기능(업종)
+     * 특정 조건에 맞는 회원 조회 기능(업종,지역)
      */
-    public List<Member> findMembersByType(String type) {
+    public List<Member> findMembersByCondition(String type, String location) {
 
         CompanyType companyType = companyTypeRepository.findByTypeName(type);
-        return memberRepository.findAllByCompanyTypeContaining(companyType.getTypeId());
+        CompanyLocation companyLocation = companyLocationRepository.findByCity(location);
+
+        return memberRepository.findAllByCompanyTypeAndCompanyLocationContaining(companyType.getTypeCode(),companyLocation.getLocationCode());
     }
 
     /**
      * 특정 조건에 맞는 회원 조회 기능(지역)
      */
+    /*
     public List<Member> findMembersByLocation(String location) {
 
         CompanyLocation companyLocation = companyLocationRepository.findByCity(location);
         return memberRepository.findAllByCompanyLocationContaining(companyLocation.getLocationId());
     }
+    */
+
 
     /**
      * 회원 전체 조회 기능
